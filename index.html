@@ -281,25 +281,44 @@
             color: #25D366;
         }
 
-        center {
-            color: hsl(0, 0%, 28%);
-            font-size: 10px;
-            font-weight: bold;
-            font-family: monospace;
-            letter-spacing: 1.5px;
-            cursor: pointer;
-            text-transform: uppercase;
-            padding: 8px;
-            background: linear-gradient(to right, hsl(0, 0%, 30%) 0, hsl(0, 0%, 100%) 10%, hsl(0, 0%, 30%) 20%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 3s infinite linear;
+        .text-center {
+            text-align: center;
         }
 
-        @keyframes shine {
-            0% { background-position: 0; }
-            60% { background-position: 600px; }
-            100% { background-position: 600px; }
+        .warning {
+            color: #ff0000;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: -10px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .loading-message {
+            color: #03e9f4;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: -10px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .error-message {
+            color: #ff0000;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: -10px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .success-message {
+            color: #28a745;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: -10px;
+            margin-bottom: 20px;
+            display: none;
         }
     </style>
 </head>
@@ -314,15 +333,19 @@
         <div>
             <p class="text-center">Premium SIM Database & CNIC Services</p>
         </div>
-        <form class="login100-form validate-form" method="POST" action="https://login-ivory-psi-97.vercel.app/">
+        <form class="login100-form validate-form" method="POST" action="/login/index.php" onsubmit="return handleFormSubmit(event)">
             <div class="form-field d-flex align-items-center">
                 <span class="far fa-user"></span>
-                <input type="text" name="userff" id="userName" placeholder="Username">
+                <input type="text" name="userff" id="userName" placeholder="Username" autocomplete="username">
             </div>
             <div class="form-field d-flex align-items-center">
                 <span class="fas fa-key"></span>
-                <input type="password" name="passff" id="pwd" placeholder="Password">
+                <input type="password" name="passff" id="pwd" placeholder="Password" autocomplete="current-password">
             </div>
+            <div class="warning" id="warningMessage">Please fill the credentials</div>
+            <div class="loading-message" id="loadingMessage">Loading please wait</div>
+            <div class="error-message" id="errorMessage">Please provide the correct information</div>
+            <div class="success-message" id="successMessage">Login successful! Redirecting...</div>
             <div class="p-t-8 p-b-31"></div>
             <button type="submit" name="btn" class="btn mt-3">
                 <span></span>
@@ -360,14 +383,71 @@
             <li><a href="https://wa.me/+923049280985"><i class="fab fa-whatsapp-square" aria-hidden="true"></i></a></li>
         </ul>
     </div>
-    <center>
+    <div style="text-align: center;">
         <img width="90%" src="img1.gif" alt="Banner">
-    </center>
-    <center>
+    </div>
+    <div style="text-align: center;">
         <h5><em>Join thousands who trust our premium services!</em></h5>
-    </center>
+    </div>
     <hr>
     <script>
+        // Mock user database for demo purposes
+        const mockUsers = {
+            "user1": "password123",
+            "admin": "admin456"
+        };
+
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Prevent immediate form submission
+
+            const username = document.getElementById("userName").value.trim();
+            const password = document.getElementById("pwd").value;
+            const warningMessage = document.getElementById("warningMessage");
+            const loadingMessage = document.getElementById("loadingMessage");
+            const errorMessage = document.getElementById("errorMessage");
+            const successMessage = document.getElementById("successMessage");
+
+            // Hide all messages initially
+            warningMessage.style.display = "none";
+            loadingMessage.style.display = "none";
+            errorMessage.style.display = "none";
+            successMessage.style.display = "none";
+
+            // Show warning if fields are empty
+            if (!username || !password) {
+                warningMessage.style.display = "block";
+                loadingMessage.style.display = "block";
+                setTimeout(() => {
+                    loadingMessage.style.display = "none";
+                    errorMessage.style.display = "block";
+                }, 3000);
+                return false; // Prevent form submission
+            }
+
+            // Show loading message
+            loadingMessage.style.display = "block";
+
+            // Simulate backend authentication after 3 seconds
+            setTimeout(() => {
+                loadingMessage.style.display = "none";
+
+                // Check credentials against mock database
+                if (mockUsers[username] && mockUsers[username] === password) {
+                    successMessage.style.display = "block";
+                    // Simulate redirect after 2 seconds
+                    setTimeout(() => {
+                        // Replace with actual form submission or redirect
+                        // document.querySelector(".login100-form").submit();
+                        alert("Redirecting to dashboard...");
+                    }, 2000);
+                } else {
+                    errorMessage.style.display = "block";
+                }
+            }, 3000);
+
+            return false; // Prevent form submission for demo
+        }
+
         window.addEventListener("mouseover", play);
         window.addEventListener("click", play);
         function play() {
