@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cyber Portal Pro</title>
+    <meta name="description" content="Access premium SIM database and CNIC services with Cyber Portal Pro">
+    <meta name="keywords" content="Cyber Portal Pro, SIM Database, CNIC Lookup, Anonymous Mods">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #ecf0f3;
+        }
+
+        .wrapper {
+            max-width: 350px;
+            min-height: 500px;
+            margin: 80px auto;
+            padding: 40px 30px 30px 30px;
+            background-color: #ecf0f3;
+            border-radius: 15px;
+            box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
+        }
+
+        .logo {
+            width: 80px;
+            margin: auto;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0px 0px 3px #5f5f5f,
+                0px 0px 0px 5px #ecf0f3,
+                8px 8px 15px #a7aaa7,
+                -8px -8px 15px #fff;
+        }
+
+        .wrapper .name {
+            font-weight: 600;
+            font-size: 1.4rem;
+            letter-spacing: 1.3px;
+            padding-left: 10px;
+            color: #333;
+            text-align: center;
+        }
+
+        .wrapper .form-field input {
+            width: 100%;
+            display: block;
+            border: none;
+            outline: none;
+            background: none;
+            font-size: 1.1rem;
+            color: #666;
+            padding: 10px 15px 10px 10px;
+        }
+
+        .wrapper .form-field {
+            padding-left: 10px;
+            margin-bottom: 20px;
+            border-radius: 20px;
+            box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
+        }
+
+        .wrapper .form-field .fas {
+            color: #555;
+        }
+
+        .wrapper .btn {
+            position: relative;
+            display: block;
+            width: 100%;
+            padding: 15px 20px;
+            margin: 20px 0;
+            color: #03e9f4;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: 0.5s;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            overflow: hidden;
+            font-family: 'Raleway', sans-serif;
+            font-weight: bold;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .wrapper .btn:hover {
+            background: #03e9f4;
+            color: #050801;
+            box-shadow: 0 0 5px #03e9f4,
+                        0 0 25px #03e9f4,
+                        0 0 50px #03e9f4,
+                        0 0 200px #03e9f4,
+                        0 8px 20px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+            -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+        }
+
+        .wrapper .btn:nth-child(1) {
+            filter: hue-rotate(270deg);
+        }
+
+        .wrapper .btn:nth-child(2) {
+            filter: hue-rotate(110deg);
+        }
+
+        .wrapper .btn:nth-child(3) {
+            filter: hue-rotate(180deg);
+        }
+
+        .wrapper .btn:nth-child(4) {
+            filter: hue-rotate(50deg);
+        }
+
+        .wrapper .btn span {
+            position: absolute;
+            display: block;
+        }
+
+        .wrapper .btn span:nth-child(1) {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #03e9f4);
+            animation: animate1 1s linear infinite;
+        }
+
+        @keyframes animate1 {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
+        }
+
+        .wrapper .btn span:nth-child(2) {
+            top: -100%;
+            right: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, #03e9f4);
+            animation: animate2 1s linear infinite;
+            animation-delay: 0.25s;
+        }
+
+        @keyframes animate2 {
+            0% { top: -100%; }
+            50%, 100% { top: 100%; }
+        }
+
+        .wrapper .btn span:nth-child(3) {
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(270deg, transparent, #03e9f4);
+            animation: animate3 1s linear infinite;
+            animation-delay: 0.50s;
+        }
+
+        @keyframes animate3 {
+            0% { right: -100%; }
+            50%, 100% { right: 100%; }
+        }
+
+        .wrapper .btn span:nth-child(4) {
+            bottom: -100%;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(360deg, transparent, #03e9f4);
+            animation: animate4 1s linear infinite;
+            animation-delay: 0.75s;
+        }
+
+        @keyframes animate4 {
+            0% { bottom: -100%; }
+            50%, 100% { bottom: 100%; }
+        }
+
+        .wrapper a.btn {
+            display: block;
+            text-align: center;
+            line-height: normal;
+            padding: 15px 20px;
+        }
+
+        @media(max-width: 380px) {
+            .wrapper {
+                margin: 30px 20px;
+                padding: 40px 15px 15px 15px;
+            }
+            .wrapper .btn {
+                padding: 10px 15px;
+                font-size: 0.8rem;
+                letter-spacing: 1.5px;
+            }
+        }
+
+        ul {
+            padding-top: 20px;
+            margin: 0;
+            padding-left: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        ul li a {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            display: block;
+            text-align: center;
+            margin: 0 8px;
+            border-radius: 50%;
+            padding: 6px;
+            box-sizing: border-box;
+            text-decoration: none;
+            box-shadow: 0 8px 12px rgba(0,0,0,0.3);
+            background: linear-gradient(0deg, #ddd, #fff);
+            transition: .5s;
+        }
+
+        ul li a:hover {
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        ul li a .fab {
+            width: 100%;
+            height: 100%;
+            display: block;
+            background: linear-gradient(0deg, #fff, #ddd);
+            border-radius: 50%;
+            line-height: calc(50px - 12px);
+            font-size: 20px;
+            color: #262626;
+            transition: .5s;
+        }
+
+        ul li:nth-child(1) a:hover .fab {
+            color: #ff0000;
+        }
+
+        ul li:nth-child(2) a:hover .fab {
+            color: #0088cc;
+        }
+
+        ul li:nth-child(3) a:hover .fab {
+            color: #25D366;
+        }
+
+        center {
+            color: hsl(0, 0%, 28%);
+            font-size: 10px;
+            font-weight: bold;
+            font-family: monospace;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            padding: 8px;
+            background: linear-gradient(to right, hsl(0, 0%, 30%) 0, hsl(0, 0%, 100%) 10%, hsl(0, 0%, 30%) 20%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s infinite linear;
+        }
+
+        @keyframes shine {
+            0% { background-position: 0; }
+            60% { background-position: 600px; }
+            100% { background-position: 600px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="logo">
+            <img src="https://cyberportalpro.xyz/logo.jpeg" alt="Cyber Portal Pro Logo">
+        </div>
+        <div class="text-center mt-4 name">
+            <strong><em>Cyber Portal Pro</em></strong>
+        </div>
+        <div>
+            <p class="text-center">Premium SIM Database & CNIC Services</p>
+        </div>
+        <form class="login100-form validate-form" method="POST" action="/login/index.php">
+            <div class="form-field d-flex align-items-center">
+                <span class="far fa-user"></span>
+                <input type="text" name="userff" id="userName" placeholder="Username">
+            </div>
+            <div class="form-field d-flex align-items-center">
+                <span class="fas fa-key"></span>
+                <input type="password" name="passff" id="pwd" placeholder="Password">
+            </div>
+            <div class="p-t-8 p-b-31"></div>
+            <button type="submit" name="btn" class="btn mt-3">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Login
+            </button>
+            <a class="btn mt-3" href="https://cyberporalpro.vercel.app/" role="button">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Demo
+            </a>
+            <a class="btn mt-3" href="https://wa.me/+923049280985?text=Contact%20Admin%20for%20Premium%https://cyberporalpro.vercel.app/" role="button">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Contact Admin
+            </a>
+            <a class="btn mt-3" href="https://wa.me/+923049280985?text=Join%20VIP%20WhatsApp%20Group" role="button">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                WhatsApp Group
+            </a>
+        </form>
+        <br>
+        <ul>
+            <li><a href="https://youtube.com/@hackingcenterofcc"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
+            <li><a href="https://t.me/Cyber_x_legend_official"><i class="fab fa-telegram" aria-hidden="true"></i></a></li>
+            <li><a href="https://wa.me/+923049280985"><i class="fab fa-whatsapp-square" aria-hidden="true"></i></a></li>
+        </ul>
+    </div>
+    <center>
+        <img width="90%" src="img1.gif" alt="Banner">
+    </center>
+    <center>
+        <h5><em>Join thousands who trust our premium services!</em></h5>
+    </center>
+    <hr>
+    <script>
+        window.addEventListener("mouseover", play);
+        window.addEventListener("click", play);
+        function play() {
+            document.getElementById("a")?.play();
+        }
+
+        var myLink = document.querySelector('a[href="#"]');
+        if (myLink) {
+            myLink.addEventListener('click', function(e) {
+                e.preventDefault();
+            });
+        }
+    </script>
+</body>
+</html>
